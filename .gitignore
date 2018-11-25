@@ -2,7 +2,7 @@
 bundle.js
 npm-debug.log
 .DS_Store
-server/config/config.json
+config/config.json
 # IntelliJ
 *.iml
 /.idea

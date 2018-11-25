@@ -2,5 +2,13 @@
   "name": "url-shortener-microservice",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "expect": "21.1.0",
+    "mocha": "3.0.2",
+    "supertest": "2.0.0"
+  }
 }
