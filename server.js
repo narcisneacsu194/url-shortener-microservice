@@ -58,6 +58,18 @@ const newUrl = parse(url, true);
   });
 });
 
+app.get('/api/shorturl/:id', (req, res) => {
+    const id = req.params.id;
+    const url = _.invert(siteObjectList)[id];
+    if(!url){
+       return res.status(404).send({
+           error: 'No short url found for given input'
+       }); 
+    }
+
+    res.redirect(url);
+});
+
 app.listen(port, () => {
     console.log(`Server started up on port ${port}`);
 });

@@ -51,6 +51,14 @@ When executing the *POST /api/shorturl/new* requst that has a body like
     }
    ```
 
+* When trying to call the *GET /api/shorturl/:id* endpoint using a non-existent **short_url**, you will get the following response: 
+
+   ```
+    {
+      "error": "No short url found for given input"
+    }
+   ```
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine.
