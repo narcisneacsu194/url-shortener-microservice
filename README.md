@@ -11,7 +11,6 @@ will provide a specific URL within the request body
     {
       "original_url": "https://www.example.com"
     }
-
    ```
   You will get a response body like the following:
 
@@ -20,7 +19,6 @@ will provide a specific URL within the request body
       "original_url": "https://www.example.com",
       "short_url": 1
     }
-
    ```
   The **short_url** property is unique. If you try to post the same URL more than once, you will get the same value for that property (unless you restart the server).
 
@@ -31,7 +29,6 @@ When executing the *POST /api/shorturl/new* requst that has a body like
     {
       "url": "https://www.example.com"
     }
-
    ```
 
   you will get a **short_url** of '1' (assuming that it is the first time you run the request). After that, if you post a different URL, like *https://www.example2.com*, you will get a **short_url** property with a value of '2'. The value is of type *number*, not *string*.
@@ -40,20 +37,19 @@ When executing the *POST /api/shorturl/new* requst that has a body like
 
 * When trying to call the *POST /api/shorturl/new* endpoint, while providing gibberish, or a URL with an invalid format within the request body, you will get the following response: 
 
- ```
+   ```
     {
-       "error": "invalid URL"
+      "error": "invalid URL"
     }
+   ```
 
- ```
 * When trying to call the *POST /api/shorturl/new* endpoint, while providing a valid URL, but that does not exist on the Internet, you will get the following response: 
 
- ```
+   ```
     {
-       "error": "invalid Hostname"
+      "error": "invalid Hostname"
     }
-
- ```
+   ```
 
 ## Getting Started
 
