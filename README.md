@@ -67,20 +67,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 You need to have ***git***, ***yarn*** and ***nodejs*** installed on your computer.
 
-You will also need to add a *config.json* file inside the *config* folder that is present within the project. The contents of that file should look something like the following:
-
-```
-{
-    "development": {
-        "PORT": 3000
-    },
-    "test": {
-        "PORT": 3000
-    }
-}
-
-```
-You must specify the *port* for each *environment* (in this case, port '3000' was used, for the *development* and *test* environments). That port number will be used by the server at runtime.
+You have the *config/config.json* file, where you can set up the port that
+***express*** will use for different environments (development and test).
 
 ### Installation steps
 
