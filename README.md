@@ -27,13 +27,14 @@ will provide a specific URL within the request body
   The unique id property is incremental, meaning that for each different url, you will get the next available number for it.
 When executing the *POST /api/shorturl/new* requst that has a body like
 
- ```
+   ```
     {
-       "url": "https://www.example.com"
+      "url": "https://www.example.com"
     }
 
- ```
- you will get a **short_url** of '1' (assuming that it is the first time you run the request). After that, if you post a different URL, like *https://www.example2.com*, you will get a **short_url** property with a value of '2'. The value is of type *number*, not *string*.
+   ```
+
+  you will get a **short_url** of '1' (assuming that it is the first time you run the request). After that, if you post a different URL, like *https://www.example2.com*, you will get a **short_url** property with a value of '2'. The value is of type *number*, not *string*.
 
 * When calling *GET /api/shorturl/{short_url}*, assuming that the URL you provided with the post request is valid, you will be redirected to that specific site.
 
