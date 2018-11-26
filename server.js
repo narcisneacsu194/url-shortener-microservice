@@ -26,7 +26,7 @@ const newUrl = parse(url, true);
  dns.lookup(newUrl.hostname, (err, address, family) => {
       if(err){
           resultResult = true;
-          res.status(400).send({
+          return res.status(400).send({
               "error": "invalid Hostname"
           });
       }
