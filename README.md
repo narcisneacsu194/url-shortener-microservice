@@ -24,7 +24,7 @@ will provide a specific URL within the request body
    ```
   The **short_url** property is unique. If you try to post the same URL more than once, you will get the same value for that property (unless you restart the server).
 
- The unique id property is incremental, meaning that for each different url, you will get the next available number for it.
+  The unique id property is incremental, meaning that for each different url, you will get the next available number for it.
 When executing the *POST /api/shorturl/new* requst that has a body like
 
  ```
