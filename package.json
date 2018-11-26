@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha tests/*.test.js",
+    "test-watch": "nodemon --exec 'npm test'"
+  },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "validator": "5.6.0"
   },
   "devDependencies": {
     "expect": "21.1.0",
