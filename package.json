@@ -9,6 +9,7 @@
     "test-watch": "nodemon --exec 'npm test'"
   },
   "dependencies": {
+    "body-parser": "1.15.2",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
     "mongodb": "^3.1.10",
@@ -17,6 +18,11 @@
     "validator": "5.6.0"
   },
   "devDependencies": {
+    "eslint": "4.9.0",
+    "eslint-config-airbnb": "16.1.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jsx-a11y": "6.0.1",
+    "eslint-plugin-react": "7.4.0",
     "expect": "21.1.0",
     "mocha": "3.0.2",
     "supertest": "2.0.0"

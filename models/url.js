@@ -1,23 +1,25 @@
-var mongoose = require('mongoose');
-var _ = require('lodash');
-var UrlSchema = mongoose.Schema({
-    originalUrl: {
-        type: String,
-        required: true
-    },
-    shortUrl: {
-        type: Number,
-        required: true
-    }
+const mongoose = require('mongoose');
+const _ = require('lodash');
+
+const UrlSchema = mongoose.Schema({
+  originalUrl: {
+    type: String,
+    required: true
+  },
+  shortUrl: {
+    type: Number,
+    required: true
+  }
 });
 
-UrlSchema.methods.toJSON = function(){
-    var url = this;
-    var urlObject = url.toObject();
+function toJSON() {
+  const url = this;
+  const urlObject = url.toObject();
+  return _.pick(urlObject, ['originalUrl', 'shortUrl']);
+}
 
-    return _.pick(urlObject, ['originalUrl', 'shortUrl']);
-};
+UrlSchema.methods.toJSON = toJSON;
 
-var Url = mongoose.model('Url', UrlSchema);
+const Url = mongoose.model('Url', UrlSchema);
 
 module.exports = { Url };
