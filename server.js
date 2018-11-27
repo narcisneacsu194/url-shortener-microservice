@@ -6,6 +6,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const parse = require('url-parse');
 const _ = require('lodash');
+require('./db/mongoose');
+const { Url } = require('./models/url');
 const port = process.env.PORT || 3000;
 var siteObjectList = {};
 
@@ -25,49 +27,68 @@ const newUrl = parse(url, true);
 
  dns.lookup(newUrl.hostname, (err, address, family) => {
       if(err){
-          resultResult = true;
           return res.status(400).send({
               "error": "invalid Hostname"
           });
       }
+    
+      Url.findOne({
+          originalUrl: url
+      }).then((dbUrl) => {
+          if(dbUrl){
+            return res.send(dbUrl);
+          }
+          
+          return Url.find().sort('-shortUrl').limit(1);
+      }).then((maxUrlArr) => {
+        var newUrl;
 
-      const returnedUrl = siteObjectList[url];
-      if(!returnedUrl){
-      let maxNum;
+        if(!maxUrlArr.length)return;
 
-      let arr = Object.values(siteObjectList);
-      if(arr.length === 0){
-        maxNum = 0;
-      }else{
-        maxNum = Math.max(...arr);
-      }
-      
-
-      if(maxNum === 0){
-        siteObjectList = {[url]: 1}
-      }else{
-        let obj = {[url]: maxNum + 1};
-          _.assign(siteObjectList, obj);
-      }
-    }
-  
-     res.send({
-       original_url: url,
-       short_url: siteObjectList[url]
-     });
+        if(maxUrlArr.length === 0){
+            newUrl = new Url({
+                originalUrl: url,
+                shortUrl: 1
+            });
+        }else{
+            var maxShortUrl = maxUrlArr[0].shortUrl;
+            maxShortUrl = maxShortUrl + 1;
+            newUrl = new Url({
+                originalUrl: url,
+                shortUrl: maxShortUrl
+            });
+        }
+        
+        return newUrl.save();
+      }).then((doc) => {
+        if(!doc)return;
+        res.send(doc);
+      }).catch((err) => {
+        res.status(400).send(err);
+      });
   });
 });
 
 app.get('/api/shorturl/:id', (req, res) => {
     const id = req.params.id;
-    const url = _.invert(siteObjectList)[id];
-    if(!url){
-       return res.status(404).send({
-           error: 'No short url found for given input'
-       }); 
-    }
+    Url.findOne({shortUrl: id}).then((url) => {
+        if(!url){
+            return res.status(404).send({
+                error: 'No short url found for given input'
+            });
+        }
+        res.redirect(url.originalUrl);
+    }).catch((err) => {
+        res.status(400).send();
+    })
+    // const url = _.invert(siteObjectList)[id];
+    // if(!url){
+    //    return res.status(404).send({
+    //        error: 'No short url found for given input'
+    //    }); 
+    // }
 
-    res.redirect(url);
+    // res.redirect(url);
 });
 
 app.listen(port, () => {

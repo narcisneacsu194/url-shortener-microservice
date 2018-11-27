@@ -7,6 +7,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/server.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Mocha Tests",
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
             "args": [
@@ -25,13 +31,6 @@
             "name": "Attach by Process",
             "port": 9229,
             "restart": true
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Node.js Program",
-            "program": "${file}",
-            "cwd": "${workspaceFolder}"
         }
     ]
 }
