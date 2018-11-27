@@ -80,15 +80,7 @@ app.get('/api/shorturl/:id', (req, res) => {
         res.redirect(url.originalUrl);
     }).catch((err) => {
         res.status(400).send();
-    })
-    // const url = _.invert(siteObjectList)[id];
-    // if(!url){
-    //    return res.status(404).send({
-    //        error: 'No short url found for given input'
-    //    }); 
-    // }
-
-    // res.redirect(url);
+    });
 });
 
 app.listen(port, () => {
