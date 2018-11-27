@@ -43,7 +43,7 @@ const newUrl = parse(url, true);
       }).then((maxUrlArr) => {
         var newUrl;
 
-        if(!maxUrlArr.length)return;
+        if(!(maxUrlArr instanceof Array))return;
 
         if(maxUrlArr.length === 0){
             newUrl = new Url({
