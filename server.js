@@ -56,7 +56,7 @@ app.post('/api/shorturl/new', (req, res) => {
         });
       }
 
-        return newUrl.save();
+      return newUrl.save();
     }).then((doc) => {
       if (!doc) return;
       res.send(doc);
