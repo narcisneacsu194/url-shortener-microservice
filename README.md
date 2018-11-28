@@ -20,9 +20,9 @@ will provide a specific URL within the request body
       "short_url": 1
     }
    ```
-  The **short_url** property is unique. If you try to post the same URL more than once, you will get the same value for that property (unless you restart the server).
+  The **short_url** property is unique. If you try to post the same URL more than once, you will get the same value for that property.
 
-  The unique id property is incremental, meaning that for each different url, you will get the next available number for it.
+  This unique id property is also incremental, meaning that for each different url, you will get the next available number for it.
 When executing the *POST /api/shorturl/new* requst that has a body like
 
    ```
@@ -31,9 +31,9 @@ When executing the *POST /api/shorturl/new* requst that has a body like
     }
    ```
 
-  you will get a **short_url** of '1' (assuming that it is the first time you run the request). After that, if you post a different URL, like *https://www.example2.com*, you will get a **short_url** property with a value of '2'. The value is of type *number*, not *string*.
+  you will get a **short_url** of '1' (assuming that it is the first request on this API). After that, if you post a different URL, like *https://www.example2.com*, you will get a **short_url** property with a value of '2'. The value is of type *number*, not *string*.
 
-* When calling *GET /api/shorturl/{short_url}*, assuming that the URL you provided with the post request is valid, you will be redirected to that specific site.
+* When calling *GET /api/shorturl/{short_url}*, assuming that the URL you provided within the post request is valid, you will be redirected to that specific site.
 
 * When trying to call the *POST /api/shorturl/new* endpoint, while providing gibberish, or a URL with an invalid format within the request body, you will get the following response: 
 
@@ -43,7 +43,7 @@ When executing the *POST /api/shorturl/new* requst that has a body like
     }
    ```
 
-* When trying to call the *POST /api/shorturl/new* endpoint, while providing a valid URL, but that does not exist on the Internet, you will get the following response: 
+* When trying to call the *POST /api/shorturl/new* endpoint, while providing a valid URL that does not exist on the Internet, you will get the following response: 
 
    ```
     {
@@ -66,9 +66,6 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 You need to have ***git***, ***yarn*** and ***nodejs*** installed on your computer.
-
-You have the *config/config.json* file, where you can set up the port that
-***express*** will use for different environments (development and test).
 
 ### Installation steps
 
