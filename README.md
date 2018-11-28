@@ -65,7 +65,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You need to have ***git***, ***yarn*** and ***nodejs*** installed on your computer.
+You need to have ***git***, ***yarn***, ***nodejs*** and ***mongodb*** installed on your computer.
 
 ### Installation steps
 
@@ -73,6 +73,8 @@ You need to have ***git***, ***yarn*** and ***nodejs*** installed on your comput
 > git clone git@github.com:narcisneacsu194/url-shortener-microservice.git
 > cd {your_local_path}/url-shortener-microservice
 > yarn install
+> cd {your_local_path}/mongodb/bin
+> ./mongod --dbpath {path_of_mongo_data_folder}
 > node server.js
 ```
 
